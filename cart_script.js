@@ -27,20 +27,20 @@ function buyNow(product) {
 
 
 // Gọi hàm cập nhật giỏ hàng khi trang được tải
-document.addEventListener("DOMContentLoaded", function () {
-    updateCartCount();
+// document.addEventListener("DOMContentLoaded", function () {
+//     updateCartCount();
 
-    document.querySelectorAll(".btn-add-cart").forEach(button => {
-        button.addEventListener("click", function () {
-            const productId = parseInt(this.getAttribute("data-id"));
+//     document.querySelectorAll(".btn-add-cart").forEach(button => {
+//         button.addEventListener("click", function () {
+//             const productId = parseInt(this.getAttribute("data-id"));
 
-            fetch(`http://localhost:3001/products/${productId}`)
-                .then(response => response.json())
-                .then(product => addToCart(product))
-                .catch(error => console.error("Lỗi khi lấy sản phẩm:", error));
-        });
-    });
-});
+//             fetch(`http://localhost:3001/products/${productId}`)
+//                 .then(response => response.json())
+//                 .then(product => addToCart(product))
+//                 .catch(error => console.error("Lỗi khi lấy sản phẩm:", error));
+//         });
+//     });
+// });
 
 document.addEventListener("click", function (event) {
     if (event.target.classList.contains("btn-add-cart")) {
