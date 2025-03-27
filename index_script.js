@@ -1,42 +1,42 @@
 let allProducts = [];
-// document.addEventListener("DOMContentLoaded", function () {
-//     fetch("http://localhost:3001/products")
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error(`Lỗi HTTP: ${response.status}`);
-//             }
-//             return response.json();
-//         })
-//         .then(data => {
-//             allProducts = data;
-//             renderProducts(filterProductsByCategory("Thịt và hải sản"));
-//             renderFeaturedProducts(data);
-//             updateCartCount();
-//         })
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("http://localhost:3001/products")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Lỗi HTTP: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            allProducts = data;
+            renderProducts(filterProductsByCategory("Thịt và hải sản"));
+            renderFeaturedProducts(data);
+            updateCartCount();
+        })
         
-//         .catch(error => console.error("Lỗi tải sản phẩm:", error));
+        .catch(error => console.error("Lỗi tải sản phẩm:", error));
 
-//     fetch("http://localhost:3001/customer_feedbacks")
-//         .then(response => response.json())
-//         .then(customerFeedbacks => {
-//             const feedbackList = document.getElementById("feedback-list");
-//             feedbackList.innerHTML = "";
+    fetch("http://localhost:3001/customer_feedbacks")
+        .then(response => response.json())
+        .then(customerFeedbacks => {
+            const feedbackList = document.getElementById("feedback-list");
+            feedbackList.innerHTML = "";
 
-//             customerFeedbacks.forEach(feedback => {
-//                 const feedbackHTML = `
-//                 <div class="feedback-item">
-//                     <img src="${feedback.avatar}" alt="${feedback.name}" class="feedback-avatar">
-//                     <h5 class="feedback-name ">${feedback.name}</h5>
-//                     <p class="feedback-occupation fst-italic">--${feedback.occupation}--</p>
-//                     <p class="feedback-content">${feedback.content}</p>
-//                 </div>
-//             `;
-//                 feedbackList.innerHTML += feedbackHTML;
-//             });
-//         })
-//         .catch(error => console.error("Lỗi khi lấy dữ liệu khách hàng:", error));
+            customerFeedbacks.forEach(feedback => {
+                const feedbackHTML = `
+                <div class="feedback-item">
+                    <img src="${feedback.avatar}" alt="${feedback.name}" class="feedback-avatar">
+                    <h5 class="feedback-name ">${feedback.name}</h5>
+                    <p class="feedback-occupation fst-italic">--${feedback.occupation}--</p>
+                    <p class="feedback-content">${feedback.content}</p>
+                </div>
+            `;
+                feedbackList.innerHTML += feedbackHTML;
+            });
+        })
+        .catch(error => console.error("Lỗi khi lấy dữ liệu khách hàng:", error));
 
-// });
+});
 
 document.querySelectorAll(".btn-group button").forEach(button => {
     button.addEventListener("click", function () {
